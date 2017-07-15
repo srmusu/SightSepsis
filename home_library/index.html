@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,6 +26,42 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+        <style>
+            div.tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            div.tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+            }
+
+            /* Change background color of buttons on hover */
+            div.tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            div.tab button.active {
+                background-color: #ccc;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+                display: none;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border-top: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -43,16 +77,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
+                    <a class="navbar-brand topnav" href="#">Home</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#about">About</a>
-                        </li>
-                        <li>
-                            <a href="#services">Services</a>
                         </li>
                         <li>
                             <a href="#contact">Contact</a>
@@ -66,7 +97,7 @@
 
 
         <!-- Header -->
-        <a name="about"></a>
+        <a name=""></a>
         <div class="intro-header">
             <div class="container">
 
@@ -87,6 +118,7 @@
                                     <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
                                 </li>
                             </ul>
+                            <!--
                             <div>
                                 <h4 class="ui-horizontal-divider-header" align = "left">
                                     <i class="tag icon"></i>
@@ -94,6 +126,7 @@
                                 </h4>
                                 <p class = "intro-divider" align = "left">Sepsis is blah</p>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -106,11 +139,68 @@
 
         <!-- Page Content -->
 
-        <a  name="services"></a>
+        <a  name="about"></a>
         <div class="content-section-a">
 
             <div class="container">
                 <div class="row">
+                    <div class = "tab">
+                        <button class="tablinks" onclick="openContent(event, 'whatIsIt')">What Is It</button>
+                        <button class="tablinks" onclick="openContent(event, 'whatCausesIt')">What Causes It</button>
+                        <button class="tablinks" onclick="openContent(event, 'howIsItDetected')">How Is It Detected</button>
+                        <button class="tablinks" onclick="openContent(event, 'howDoWeTreatItToday')">How Do We Treat It Today</button>
+                        <button class="tablinks" onclick="openContent(event, 'whatDoWePropose')">What Do We Propose</button>
+                    </div>
+                    <div id="whatIsIt" class="tabcontent">
+                        <h3>What Is It</h3>
+                        <p>Sepsis is an inflammatory condition characterized by your body’s excessive immune response to a bacterial infection. It 
+                            often arises from an infected wound or improperly sterilized medical equipment, and is currently the leading cause of 
+                            death in US hospitals.</p>
+                    </div>
+                    <div id="whatCausesIt" class="tabcontent">
+                        <h3>What Causes It</h3>
+                        <p>Sepsis can emerge from a variety of microogranisms, but the major ones are gram-negative and gram-positive bacteria, and 
+                            fungi. These microorganisms release toxins that often set off an inflammatory response to try and combat the bacteria. 
+                            However, unlike a regular infection, this immune response backfires on the body, causing too many cytokines 
+                            (inflammatory molecules) to be released, leading to severe effects such as fever, organ failure and blood vessel 
+                            leakage.</p>
+                    </div>
+                    <div id="howIsItDetected" class="tabcontent">
+                        <h3>How Is It Detected</h3>
+                        <p>Diagnosis today often relies upon the expertise of your medical professionals 
+                            (especially in hospitals located in rural areas)- since there is not a quantitative test or instrument to determine 
+                            whether a patient has sepsis, and also because the symptoms of sepsis are associated with many other conditions.</p>
+                    </div>
+                    <div id="howDoWeTreatItToday" class="tabcontent">
+                        <h3>How Do We Treat It Today</h3>
+                        <p>As soon as a patient enters the intensive care unit (ICU) today, they are given vasopressers, fluids, and broad-range 
+                            antibiotics in effort to slow down the progression of their inflammation. However, the antibiotics administered at this 
+                            point are often unable to target the source of the infection. More targeted antibiotic treatment requires a blood test 
+                            to culture and identify the bacteria which can take several hours- time that most patients do not have when their 
+                            diagnosis is made too late.</p>
+                    </div>
+                    <div id="whatDoWePropose" class="tabcontent">
+                        <h3>What Do We Propose</h3>
+                        <p>SightSepsis is working on a technology to diagnose sepsis by processing insight from a patient’s vital signs in real-time
+                             and classifying their condition and its severity. This web application is meant to serve as an intuitive tool for 
+                             medical professionals and ICU specialists who work with sepsis patients on a daily basis.</p>
+                    </div>
+                    <script>
+                        function openContent(evt, sepsisInfo) {
+                            var i, tabcontent, tablinks;
+                             tabcontent = document.getElementsByClassName("tabcontent");
+                            for (i = 0; i < tabcontent.length; i++) {
+                                tabcontent[i].style.display = "none";
+                            }
+                            tablinks = document.getElementsByClassName("tablinks");
+                            for (i = 0; i < tablinks.length; i++) {
+                                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                            }
+                            document.getElementById(sepsisInfo).style.display = "block";
+                            evt.currentTarget.className += " active";
+                        }
+                    </script>
+                    <!--
                     <div class="col-lg-5 col-sm-6">
                         <hr class="section-heading-spacer">
                         <div class="clearfix"></div>
@@ -120,8 +210,8 @@
                     <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                         <img class="img-responsive" src="img/ipad.png" alt="">
                     </div>
+                    -->
                 </div>
-
             </div>
             <!-- /.container -->
 
@@ -214,10 +304,6 @@
                             <li class="footer-menu-divider">&sdot;</li>
                             <li>
                                 <a href="#about">About</a>
-                            </li>
-                            <li class="footer-menu-divider">&sdot;</li>
-                            <li>
-                                <a href="#services">Services</a>
                             </li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li>
